@@ -26,6 +26,7 @@ schema_view = get_schema_view(
 )
 
 urlpatterns = [
+    url(r"^lists/", include("build_migration.todo.urls")),
     url(r"^healthz/", include("health_check.urls")),
     # Django Admin, use {% url 'admin:index' %}
     url(settings.ADMIN_URL, admin.site.urls),

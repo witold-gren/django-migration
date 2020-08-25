@@ -1,0 +1,12 @@
+from build_migration.todo.views.add_list import add_list  # noqa: F401
+from build_migration.todo.views.del_list import del_list  # noqa: F401
+from build_migration.todo.views.delete_task import delete_task  # noqa: F401
+from build_migration.todo.views.external_add import external_add  # noqa: F401
+from build_migration.todo.views.import_csv import import_csv  # noqa: F401
+from build_migration.todo.views.list_detail import list_detail  # noqa: F401
+from build_migration.todo.views.list_lists import list_lists  # noqa: F401
+from build_migration.todo.views.remove_attachment import remove_attachment  # noqa: F401
+from build_migration.todo.views.reorder_tasks import reorder_tasks  # noqa: F401
+from build_migration.todo.views.search import search  # noqa: F401
+from build_migration.todo.views.task_detail import task_detail  # noqa: F401
+from build_migration.todo.views.toggle_done import toggle_done  # noqa: F401

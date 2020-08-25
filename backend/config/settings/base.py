@@ -61,7 +61,7 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     # Custom users app
     "build_migration.users.apps.UsersConfig",
-    "build_migration.contrib"
+    "build_migration.todo.apps.TodoConfig"
     # Your stuff: custom apps go here
 ]
 
