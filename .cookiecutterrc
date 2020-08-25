@@ -1,0 +1,42 @@
+# This file exists so you can easily regenerate your project.
+#
+# `cookiepatcher` is a convenient shim around `cookiecutter`
+# for regenerating projects (it will generate a .cookiecutterrc
+# automatically for any template). To use it:
+#
+#    pip install cookiepatcher
+#    cookiepatcher gh:ionelmc/cookiecutter-pylibrary project-path
+#
+# See:
+#    https://pypi.python.org/pypi/cookiecutter
+#
+# Alternatively, you can run:
+#
+#    cookiecutter --overwrite-if-exists --config-file=build_migration/.cookiecutterrc git@github.com:witold-gren/project-template.git
+
+default_context:
+
+    _template:                       'django-template-master'
+    author_name:                     'Witold Gren'
+    description:                     'A short description of the project.'
+    django_version:                  '3.1'
+    domain_name:                     'build-migration.plentific.com'
+    email:                           'witold.gren@plentific.com'
+    github_org_name:                 'plentific'
+    open_source_license:             'MIT'
+    postgresql_version:              '11.6'
+    project_name:                    'Build migration'
+    project_slug:                    'build_migration'
+    python_version:                  '3.7-alpine'
+    slack_channel:                   'build_migration'
+    use_celery:                      'n'
+    use_django_allauth:              'n'
+    use_django_amazon_ses:           'n'
+    use_django_channels:             'n'
+    use_django_rest_framework:       'y'
+    use_django_storages:             'n'
+    use_graphql:                     'n'
+    use_pycharm:                     'y'
+    use_sphinx:                      'n'
+    version:                         '0.1.0'
+    windows:                         'n'

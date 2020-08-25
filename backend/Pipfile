@@ -1,0 +1,167 @@
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[requires]
+python_version = '3.7'
+
+[packages]
+# This is a workaround for a possible Pipenv bug, where it will install enum34 in
+# spite of the python version marker, breaking the environment for packages which
+# depend on more recent standard library enum features
+# See for example: https://github.com/pypa/pipenv/issues/3980
+enum34 = {version = "*", python_version = "<'3.4'"}
+
+# Django
+django = "~=2.2.0"
+
+# Configuration
+django-environ = "~=0.4.5"
+
+# Models
+django-model-utils = "~=3.2.0"
+
+# Images
+Pillow = "~=6.2.0"
+
+# Password storage
+argon2-cffi = "~=19.1.0"
+
+# Health check
+django-health-check = "~=3.11.0"
+# Python-PostgreSQL Database Adapter
+psycopg2-binary = "~=2.8.3"
+# Unicode slugification
+awesome-slugify = "~=1.6.5"
+
+# Time zones support
+pytz = "*"
+
+# Redis support for cache and celery
+django-redis = "~=4.10.0"
+redis = "~=3.3.11"
+
+# Powerful and flexible toolkit for building Web APIs
+djangorestframework = "~=3.10.3"
+django-rest-auth = "~=0.9.5"
+
+# Python implementation of Markdown for DRF
+Markdown = "~=3.1.1"
+
+# Reusable app for filter querysets dynamically
+django-filter = "~=2.2.0"
+
+# API documentation
+drf-yasg = "~=1.17.0"
+swagger-spec-validator = "~=2.4.3"
+flex = "~=6.14.1"
+
+# Exports Django monitoring metrics for Prometheus.io
+django-prometheus = "~=1.1.0"
+
+# Adds CORS headers to responses
+django-cors-headers = "~=3.1.1"
+
+# WSGI Handler
+gevent = "~=1.4.0"
+gunicorn = "~=19.9.0"
+
+# Health check memory and CPU usage
+psutil = "~=5.6.3"
+
+# Sentry SDK client
+sentry_sdk = "~=0.12.3" # minimum version for the asgi middleware
+
+# Install AWS CLI for debugging
+awscli = "*"
+
+django-deprecation = "~=0.1.1"
+django-deprecate-fields = "~=0.0.4"
+Deprecated = "~=1.2.10"
+deprecation = "~=2.1.0"
+
+# Your custom base dependencies do below this line
+# ----------------------------------------------------------------------------
+
+
+
+#------------------------- DEV DEPENDENCIES START HERE -----------------------
+[dev-packages]
+
+# WSGI utility library for Python
+Werkzeug = "~=0.16.0"
+
+# Collection of useful extensions
+django-extensions = "~=2.2.3"
+
+# Python debugger
+pudb = "~=2019.1"
+
+# jupyter module
+jupyter = "~=1.0.0"
+
+# Code coverage
+coverage = "~=4.5.4"
+
+# create model fixture
+factory-boy = "~=2.12.0"
+
+# best testing framework
+pytest = "~=5.2.1"
+
+# pytest plugin produces coverage reports
+pytest-cov = "~=2.8.1"
+
+# testing django with pytest
+pytest-django = "~=3.5.1"
+
+# distributed testing and loop-on-failing modes
+pytest-xdist = "~=1.30.0"
+
+# changes the default look test results
+pytest-sugar = "~=0.9.2"
+
+# pytest plugin for faker
+pytest-faker = "~=2.0.0"
+
+# pytest plugin for mock module
+pytest-mock = "~=1.11.1"
+
+# pytest plugin for pudb
+pytest-pudb = "~=0.7.0"
+
+# pytest plugin for factoryboy
+pytest-factoryboy = "~=2.0.3"
+
+# pytest plugin to enable format checking with black
+pytest-black = "==0.3.7"
+
+# pytest plugin to enable format checking with isort
+pytest-isort = "==0.3.1"
+
+# app for create functional testing
+django-webtest = "~=1.9.7"
+
+# very useful toolbar for debuging project
+django-debug-toolbar = "~=2.0"
+
+# very easy request mock
+requests-mock = "~=1.7.0"
+
+# code audit tool
+isort = "~=4.3.21"
+pylama = "~=7.7.1"
+pylama-pylint = "~=3.1.1"
+pylint-django = "~=2.0.11"
+
+radon = "~=4.0.0"
+black = "==19.3b0"
+
+# Mypy and stubs
+mypy = ">=0.730"
+django-stubs = ">=1.1.0"
+djangorestframework-stubs = ">=1.0.0"
+
+# Your custom dev dependencies go below this line
+# ----------------------------------------------------------------------------

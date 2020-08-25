@@ -1,0 +1,54 @@
+version: '3.4'
+
+services:
+  db:
+    user: "${UID:-1000}"
+    image: postgres:11.6
+    container_name: build-migration-db
+    volumes:
+      - ./shared/postgresql:/var/lib/postgresql/data
+    env_file:
+      - .envs/.local/.postgres
+    environment:
+      # We set PGDATA to a subfolder because Postgres needs this folder to be
+      # empty, and we have a .gitkeep file there
+      - PGDATA=/var/lib/postgresql/data/pgdata
+
+  app: &app
+    user: "${UID:-1000}"
+    container_name: build-migration-app
+    build:
+      network: host
+      context: .
+      dockerfile: ./docker/Dockerfile
+      args:
+        DEV_MODE: "1"
+        USER_ID: "${UID:-1000}"
+    command: "/start-runserver.sh"
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    env_file:
+      - .envs/.local/.django
+      - .envs/.local/.postgres
+    environment:
+      - DJANGO_CHECK_MIGRATION=True
+    volumes:
+      - ./backend:/app
+      - ./shared/media:/app/shared/media
+      - ./shared/static:/app/shared/static
+      - ./shared/templates:/app/shared/templates
+
+  migrate:
+    <<: *app
+    container_name: build-migration-migrate
+    depends_on:
+      - db
+    ports: []
+    environment: []
+    command: migrate
+
+  redis:
+    container_name: build-migration-redis
+    image: redis:3.0

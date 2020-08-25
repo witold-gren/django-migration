@@ -1,0 +1,11 @@
+*
+
+!docker/**/*.sh
+!docker
+
+!shared/templates/**/*
+!shared/static/**/*
+
+!backend/*
+backend/.pytest_cache/
+backend/celerybeat*
