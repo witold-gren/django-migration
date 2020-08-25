@@ -141,6 +141,7 @@ class Comment(models.Model):
     email_message_id = models.CharField(max_length=255, blank=True, null=True)
 
     body = models.TextField(blank=True)
+    extra_field = models.BooleanField(blank=True, null=True)
 
     class Meta:
         # an email should only appear once per task
