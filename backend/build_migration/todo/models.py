@@ -183,3 +183,11 @@ class Attachment(models.Model):
 
     def __str__(self):
         return f"{self.task.id} - {self.file.name}"
+
+
+class Example(models.Model):
+    author = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True,
+        null=True
+    )
+    body = models.TextField(blank=True)
