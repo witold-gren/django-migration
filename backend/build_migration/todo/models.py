@@ -11,6 +11,8 @@ from django.db.transaction import Atomic, get_connection
 from django.urls import reverse
 from django.utils import timezone
 
+from django_deprecation import DeprecatedField
+
 
 def get_attachment_upload_dir(instance, filename):
     """Determine upload dir for task attachment files.
@@ -172,7 +174,10 @@ class Attachment(models.Model):
     task = models.ForeignKey(Task, on_delete=models.CASCADE)
     added_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     timestamp = models.DateTimeField(default=datetime.datetime.now)
-    file = models.FileField(upload_to=get_attachment_upload_dir, max_length=255)
+    file_object = models.FileField(upload_to=get_attachment_upload_dir, max_length=255, db_column='file')
+
+    # deprecated
+    file = DeprecatedField('file_object')
 
     def filename(self):
         return os.path.basename(self.file.name)

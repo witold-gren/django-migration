@@ -15,7 +15,7 @@ class CommentAdmin(admin.ModelAdmin):
 
 
 class AttachmentAdmin(admin.ModelAdmin):
-    list_display = ("task", "added_by", "timestamp", "file")
+    list_display = ("task", "added_by", "timestamp", "file_object")
     autocomplete_fields = ["added_by", "task"]
 
 
