@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from build_migration.todo.models import File, Attachment, Comment, Task, TaskList
+from build_migration.todo.models import File, Comment, Task, TaskList
 
 
 class TaskAdmin(admin.ModelAdmin):
@@ -22,4 +22,4 @@ class FileAdmin(admin.ModelAdmin):
 admin.site.register(TaskList)
 admin.site.register(Comment, CommentAdmin)
 admin.site.register(Task, TaskAdmin)
-admin.site.register(Attachment, FileAdmin)  # todo: left specially
+admin.site.register(File, FileAdmin)

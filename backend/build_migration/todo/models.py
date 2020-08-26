@@ -166,7 +166,7 @@ class Comment(models.Model):
         return self.snippet
 
 
-class BaseAttachment(models.Model):
+class File(models.Model):
     """
     Defines a generic file attachment for use in M2M relation with Task.
     """
@@ -185,18 +185,3 @@ class BaseAttachment(models.Model):
 
     def __str__(self):
         return f"{self.task.id} - {self.file.name}"
-
-    class Meta:
-        abstract = True
-
-
-@deprecated(reason="This class will be remove, use `File` class.")
-class Attachment(BaseAttachment):
-    pass
-
-
-class File(BaseAttachment):
-
-    class Meta:
-        db_table = 'todo_attachment'
-        managed = False
