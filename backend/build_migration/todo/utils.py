@@ -161,9 +161,9 @@ def remove_attachment_file(attachment_id: int) -> bool:
     """Delete an Attachment object and its corresponding file from the filesystem."""
     try:
         attachment = Attachment.objects.get(id=attachment_id)
-        if attachment.file:
-            if os.path.isfile(attachment.file.path):
-                os.remove(attachment.file.path)
+        if attachment.file_object:
+            if os.path.isfile(attachment.file_object.path):
+                os.remove(attachment.file_object.path)
 
         attachment.delete()
         return True

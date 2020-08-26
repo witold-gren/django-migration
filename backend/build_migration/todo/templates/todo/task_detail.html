@@ -137,7 +137,7 @@
             <tbody>
               {% for attachment in task.attachment_set.all %}
                 <tr>
-                  <td><a href="{{ attachment.file.url }}">{{ attachment.filename }}</a></td>
+                  <td><a href="{{ attachment.file_object.url }}">{{ attachment.filename }}</a></td>
                   <td>{{ attachment.timestamp }}</td>
                   <td>{{ attachment.added_by.get_full_name }}</td>
                   <td>{{ attachment.extension.lower }}</td>

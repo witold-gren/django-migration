@@ -174,17 +174,14 @@ class Attachment(models.Model):
     task = models.ForeignKey(Task, on_delete=models.CASCADE)
     added_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     timestamp = models.DateTimeField(default=datetime.datetime.now)
-    file_object = models.FileField(upload_to=get_attachment_upload_dir, max_length=255, db_column='file')
-
-    # deprecated
-    file = DeprecatedField('file_object')
+    file_object = models.FileField(upload_to=get_attachment_upload_dir, max_length=255)
 
     def filename(self):
-        return os.path.basename(self.file.name)
+        return os.path.basename(self.file_object.name)
 
     def extension(self):
-        name, extension = os.path.splitext(self.file.name)
+        name, extension = os.path.splitext(self.file_object.name)
         return extension
 
     def __str__(self):
-        return f"{self.task.id} - {self.file.name}"
+        return f"{self.task.id} - {self.file_object.name}"
