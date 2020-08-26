@@ -238,7 +238,6 @@ WSGI_APPLICATION = "config.wsgi.application"
 # ------------------------------------------------------------------------------
 # See https://docs.djangoproject.com/en/dev/topics/auth/passwords/#using-argon2-with-django
 PASSWORD_HASHERS = [
-    "django.contrib.auth.hashers.Argon2PasswordHasher",
     "django.contrib.auth.hashers.PBKDF2PasswordHasher",
     "django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher",
     "django.contrib.auth.hashers.BCryptSHA256PasswordHasher",
@@ -270,7 +269,6 @@ AUTHENTICATION_BACKENDS = [  # fmt: off
 # Select the correct user model
 AUTH_USER_MODEL = "users.User"
 LOGIN_REDIRECT_URL = "users:redirect"
-LOGIN_URL = "account_login"
 
 
 # SLUGIFIER

@@ -9,7 +9,7 @@ from django.core import mail
 from django.template.loader import render_to_string
 
 from build_migration.todo.defaults import defaults
-from build_migration.todo.models import Attachment, Comment, Task
+from build_migration.todo.models import File, Comment, Task
 
 log = logging.getLogger(__name__)
 
@@ -160,7 +160,7 @@ def toggle_task_completed(task_id: int) -> bool:
 def remove_attachment_file(attachment_id: int) -> bool:
     """Delete an Attachment object and its corresponding file from the filesystem."""
     try:
-        attachment = Attachment.objects.get(id=attachment_id)
+        attachment = File.objects.get(id=attachment_id)
         if attachment.file:
             if os.path.isfile(attachment.file.path):
                 os.remove(attachment.file.path)
@@ -168,6 +168,6 @@ def remove_attachment_file(attachment_id: int) -> bool:
         attachment.delete()
         return True
 
-    except Attachment.DoesNotExist:
+    except File.DoesNotExist:
         log.info(f"Attachment {attachment_id} not found.")
         return False

@@ -11,6 +11,8 @@ from django.db.transaction import Atomic, get_connection
 from django.urls import reverse
 from django.utils import timezone
 
+from deprecated import deprecated
+
 
 def get_attachment_upload_dir(instance, filename):
     """Determine upload dir for task attachment files.
@@ -164,7 +166,7 @@ class Comment(models.Model):
         return self.snippet
 
 
-class Attachment(models.Model):
+class BaseAttachment(models.Model):
     """
     Defines a generic file attachment for use in M2M relation with Task.
     """
@@ -183,3 +185,18 @@ class Attachment(models.Model):
 
     def __str__(self):
         return f"{self.task.id} - {self.file.name}"
+
+    class Meta:
+        abstract = True
+
+
+@deprecated(reason="This class will be remove, use `File` class.")
+class Attachment(BaseAttachment):
+    pass
+
+
+class File(BaseAttachment):
+
+    class Meta:
+        db_table = 'todo_attachment'
+        managed = False

@@ -34,6 +34,7 @@ services:
       - .envs/.local/.postgres
     environment:
       - DJANGO_CHECK_MIGRATION=True
+      - PYTHONWARNINGS=d
     volumes:
       - ./backend:/app
       - ./shared/media:/app/shared/media

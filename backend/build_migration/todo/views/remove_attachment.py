@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse
 
-from build_migration.todo.models import Attachment
+from build_migration.todo.models import File
 from build_migration.todo.utils import remove_attachment_file
 
 
@@ -16,7 +16,7 @@ def remove_attachment(request, attachment_id: int) -> HttpResponse:
     """
 
     if request.method == "POST":
-        attachment = get_object_or_404(Attachment, pk=attachment_id)
+        attachment = get_object_or_404(File, pk=attachment_id)
 
         redir_url = reverse("todo:task_detail", kwargs={"task_id": attachment.task.id})
 

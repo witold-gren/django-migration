@@ -14,7 +14,7 @@ from django.urls import reverse
 from build_migration.todo.defaults import defaults
 from build_migration.todo.features import HAS_TASK_MERGE
 from build_migration.todo.forms import AddEditTaskForm
-from build_migration.todo.models import Attachment, Comment, Task
+from build_migration.todo.models import File, Comment, Task
 from build_migration.todo.utils import (
     send_email_to_thread_participants,
     staff_check,
@@ -132,7 +132,7 @@ def task_detail(request, task_id: int) -> HttpResponse:
             messages.error(request, f"This site does not allow upload of {extension} files.")
             return redirect("todo:task_detail", task_id=task.id)
 
-        Attachment.objects.create(
+        File.objects.create(
             task=task, added_by=request.user, timestamp=datetime.datetime.now(), file=file
         )
         messages.success(request, f"File attached successfully")

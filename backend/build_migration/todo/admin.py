@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from build_migration.todo.models import Attachment, Comment, Task, TaskList
+from build_migration.todo.models import File, Attachment, Comment, Task, TaskList
 
 
 class TaskAdmin(admin.ModelAdmin):
@@ -14,7 +14,7 @@ class CommentAdmin(admin.ModelAdmin):
     list_display = ("author", "date", "snippet")
 
 
-class AttachmentAdmin(admin.ModelAdmin):
+class FileAdmin(admin.ModelAdmin):
     list_display = ("task", "added_by", "timestamp", "file")
     autocomplete_fields = ["added_by", "task"]
 
@@ -22,4 +22,4 @@ class AttachmentAdmin(admin.ModelAdmin):
 admin.site.register(TaskList)
 admin.site.register(Comment, CommentAdmin)
 admin.site.register(Task, TaskAdmin)
-admin.site.register(Attachment, AttachmentAdmin)
+admin.site.register(Attachment, FileAdmin)  # todo: left specially
